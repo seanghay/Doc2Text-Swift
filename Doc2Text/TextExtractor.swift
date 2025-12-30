@@ -11,9 +11,6 @@ class TextExtractor {
       }
       
       let recognizedStrings = observations.compactMap { observation in
-        if observation.confidence <= 0.1 {
-          return "<low confidence observation>"
-        }
         let str = observation.topCandidates(1).first?.string
         return "{text: \(str!), confidence: \(observation.confidence)}"
       }
